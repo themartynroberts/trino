@@ -325,6 +325,7 @@ public class TestMongoConnectorTest
                 {"time '00:00:00.000'"},
                 {"timestamp '1970-01-01 00:00:00.000'"},
                 {"timestamp '1970-01-01 00:00:00.000 UTC'"},
+                {"varbinary 'bar'"},
         };
     }
 

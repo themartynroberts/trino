@@ -43,6 +43,7 @@ import io.trino.spi.type.Type;
 import io.trino.spi.type.TypeSignatureParameter;
 import io.trino.spi.type.VarbinaryType;
 import io.trino.spi.type.VarcharType;
+import org.bson.BsonBinarySubType;
 import org.bson.BsonInvalidOperationException;
 import org.bson.Document;
 import org.bson.types.Binary;
@@ -169,7 +170,7 @@ public class MongoPageSink
             return padSpaces(type.getSlice(block, position), ((CharType) type)).toStringUtf8();
         }
         if (type.equals(VarbinaryType.VARBINARY)) {
-            return new Binary(type.getSlice(block, position).getBytes());
+            return new Binary(BsonBinarySubType.UUID_LEGACY, type.getSlice(block, position).getBytes());
         }
         if (type.equals(DateType.DATE)) {
             long days = type.getLong(block, position);

@@ -58,6 +58,7 @@ import io.trino.spi.type.TypeManager;
 import io.trino.spi.type.TypeSignature;
 import io.trino.spi.type.TypeSignatureParameter;
 import io.trino.spi.type.VarcharType;
+import org.bson.BsonBinarySubType;
 import org.bson.Document;
 import org.bson.types.Binary;
 import org.bson.types.ObjectId;
@@ -610,6 +611,10 @@ public class MongoSession
             long millisUtc = unpackMillisUtc((long) trinoNativeValue);
             Instant instant = Instant.ofEpochMilli(millisUtc);
             return Optional.of(LocalDateTime.ofInstant(instant, UTC));
+        }
+
+        if (type == VARBINARY) {
+            return Optional.of(new Binary(BsonBinarySubType.UUID_LEGACY, ((Slice) trinoNativeValue).getBytes()));
         }
 
         return Optional.empty();

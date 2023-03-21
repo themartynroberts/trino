@@ -32,6 +32,7 @@ import static io.trino.spi.type.TimeType.TIME_MILLIS;
 import static io.trino.spi.type.TimestampType.TIMESTAMP_MILLIS;
 import static io.trino.spi.type.TimestampWithTimeZoneType.TIMESTAMP_TZ_MILLIS;
 import static io.trino.spi.type.TinyintType.TINYINT;
+import static io.trino.spi.type.VarbinaryType.VARBINARY;
 
 public final class TypeUtils
 {
@@ -44,7 +45,8 @@ public final class TypeUtils
             DATE,
             TIME_MILLIS,
             TIMESTAMP_MILLIS,
-            TIMESTAMP_TZ_MILLIS);
+            TIMESTAMP_TZ_MILLIS,
+            VARBINARY);
 
     private TypeUtils() {}
 
